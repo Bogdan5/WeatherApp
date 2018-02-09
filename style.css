@@ -1,6 +1,6 @@
 body {
     position: relative;
-    font-family: Arial,sans-serif;
+    font-family: Georgia,sans-serif;
     font-weight: 400;
     font-size: 20px;
     color: #990000;
@@ -103,3 +103,10 @@ body {
 #optionalSpeedSys:hover {
         background: rgba(255,255,255,0.9);
     }
+
+.result-box{
+  background-color:rgba(255,255,255,0.8);
+  margin-bottom:0;height:30px;
+  padding-bottom:5px;
+  border-radius:5px 5px 0 0;
+}
