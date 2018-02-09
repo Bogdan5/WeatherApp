@@ -13,20 +13,20 @@
           <h3>Local Weather App</h3>
           <p id="location">Location</p>
           <img id="icon"/>
-          <div style="font-size:24px;padding:10px;"><span id="temperature">Temperature</span><span id="currSys"> &#8457; </span>
-              <span id="optionalSys">&#8451;</span>
+          <div class="temp-div"><span id="temperature">Temperature</span><span id="currSys"> &#8457; </span>
+              <span id="optionalSys" class="optional">&#8451;</span>
           </div>
           <div id="footer">
-              <section id="summary">
-                  <p id="summarytext"></p>
+              <section id="summary" class="float-left">
+                  <p id="summarytext" class="tiles"></p>
               </section>
-              <section id="wind">
+              <section id="wind" class="float-left">
                   <p class="result-box">Wind</p>
-                <p id="wnd"><span id="winddirection"></span><span>&nbsp</span><span id="windspeed"></span><span>&nbsp</span><span id="currSpeedSys">mi/h</span><span>&nbsp</span><span id="optionalSpeedSys">km/h</span></p>
+                <p id="wnd" class="tiles text-tiles"><span id="winddirection"></span><span>&nbsp</span><span id="windspeed"></span><span>&nbsp</span><span id="currSpeedSys">mi/h</span><span>&nbsp</span><span id="optionalSpeedSys" class="optional">km/h</span></p>
               </section>
-              <section id="humidity">
+              <section id="humidity" class="float-left">
                   <p  class="result-box">Humidity</p>
-                  <p id="humiditytext"></p>
+                  <p id="humiditytext" class="tiles text-tiles"></p>
               </section>
           </div>
       </div>

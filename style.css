@@ -11,6 +11,7 @@ body {
     box-sizing: border-box;
 }
 
+/* the central box of the app */
 #app {
     min-width: 40%;
     max-width: 50%;
@@ -21,89 +22,95 @@ body {
     padding-top:20px;
 }
 
+/* city */
 #location{
     min-height:10px;
 }
 
-#currSys{
-    margin-left:5px;
-}
-
-#optionalSys {
-    margin-left: 5px;
-}
-
-    #optionalSys:hover {
-        background: rgba(255,255,255,0.7);
-    }
-
+/* icon showing the type of weather */
 #icon{
     border-radius:9px;
     border:3px solid darkred;
 }
 
+/* temperature div */
+.temp-div{
+  font-size:24px;
+  padding:10px;
+}
+
+/* current type of temperature */
+#currSys{
+    margin-left:5px;
+}
+
+/* box for alternative temperature system */
+#optionalSys {
+    margin-left: 5px;
+}
+
+    #optionalSys:hover, #optionalSpeedSys:hover {
+        background: rgba(255,255,255,0.7);
+    }
+
+
+/* those options to transform to the metric system */
+.optional{
+  color:#ff0000;
+  cursor: pointer;
+}
+
+/* box with the description */
+#summary {
+    width: 30%;
+}
+
+/* weather description text*/
+#summarytext {
+    height:90px;
+    padding-top:30px;
+    border-radius:5px;
+}
+
+/* dimensions wind box */
+#wind {
+    width: 45%;
+}
+
+/* dimensions humidity box */
+#humidity {
+    width: 25%;
+}
+
+/* float the bottom divs to the left */
+.float-left{
+  float: left;
+  padding: 15px;
+}
+
+/* clearfix */
 #footer::after {
     content: "";
     clear: both;
     display: table;
 }
 
-#summary {
-    width: 30%;
-    float: left;
-    padding: 15px;
+/* background of the tiles containing information */
+.tiles{
+  background-color: lightgrey;
+  background: rgba(255,255,255,0.5);
 }
 
-#wind {
-    width: 45%;
-    float: left;
-    padding: 15px;
+/* dimensions of the tiles containing information */
+.text-tiles{
+  height: 60px;
+  padding-top: 15px;
+  border-radius: 0 0 5px 5px;
+  margin-top: 0;
 }
 
-#humidity {
-    width: 25%;
-    float: left;
-    padding: 15px;
-}
 
-#summarytext {
-    background-color: lightgrey;
-    background: rgba(255,255,255,0.5);
-    height:90px;
-    padding-top:30px;
-    border-radius:5px;
-}
-
-#humiditytext {
-    background-color: lightgrey;
-    background: rgba(255,255,255,0.5);
-    height: 60px;
-    padding-top: 15px;
-    border-radius: 0 0 5px 5px;
-    margin-top: 0;
-}
-
-#wnd {
-    background-color: lightgrey;
-    background: rgba(255,255,255,0.5);
-    height: 60px;
-    padding-top: 15px;
-    border-radius: 0 0 5px 5px;
-    margin-top:0;
-    font-family:Georgia, sans-serif;
-    color:inherit;
-    font-size:inherit;
-    font-weight:inherit;
-}
-
-#optionalSpeedSys{
-  color:#ffb3b3;
-}
-
-#optionalSpeedSys:hover {
-        background: rgba(255,255,255,0.9);
-    }
-
+/* it contains the boxes with the type of information (wind, humidity) */
 .result-box{
   background-color:rgba(255,255,255,0.8);
   margin-bottom:0;height:30px;

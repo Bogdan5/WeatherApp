@@ -1,5 +1,8 @@
 $(document).ready(function(){
-
+  var tempIsCelsius = false,
+      tempNow, tempNowCelsius, //temperature from ajax (in Fahrenheit) and temp tranformed in Celsius
+      windIsInKm = false,
+      windSpeedMiles; //wind speed by default (miles) and transformed in Kms
 
   //function myFunction() {
       $.ajax({
@@ -15,11 +18,15 @@ $(document).ready(function(){
                   url: stringURL,
                   dataType: 'json',
                   success: function (response2) {
+                      //event bindings placed here to avoid asynch surprises
+                      $("#optionalSys").on("click",changeTempSys);
+                      $("#optionalSpeedSys").on("click", changeSpeedSys);
                       //retrieving weather information based on coordinates
-                      var tempNow = response2.currently.temperature;
+                      tempNow = response2.currently.temperature;
                       $("#temperature").text(tempNow.toFixed(1));
                       iconSet(response2.currently.icon);
                       $("#summarytext").text(response2.currently.summary);
+                      windSpeedMiles=response2.currently.windSpeed;
                       $("#windspeed").text(response2.currently.windSpeed);
                       var hum=response2.currently.humidity*100;
                       $("#humiditytext").text(hum.toFixed(1)+' %');
@@ -32,21 +39,18 @@ $(document).ready(function(){
 //  myFunction();
   //changes temperature from Fahrenheit to Celsius and vice-versa
   function changeTempSys() {
-      console.log("changeTemp fired");
-      var currSys = $("#currSys").text();
-      var currTemp = parseFloat($("#temperature").text());
-      if (currSys == '\u2103') {
-          var toFahrenheit = currTemp * 1.8 + 32;
-          $("#temperature").text('' + toFahrenheit.toFixed(1));
+      if (tempIsCelsius) {
+          $("#temperature").text('' + tempNow.toFixed(1));
           $("#currSys").text('\u2109');
           $("#optionalSys").text('\u2103');
-      } else if (currSys =='\u2109') {
-          var toCelsius = ((currTemp - 32) * 5) / 9;
-          $("#temperature").text('' + toCelsius.toFixed(1));
+      } else {
+          tempNowCelsius = ((tempNow - 32) * 5) / 9;
+          $("#temperature").text('' + tempNowCelsius.toFixed(1));
           $("#currSys").text('\u2103');
           $("#optionalSys").text('\u2109');
       }
       $("#optionalSys").css('color', '#ffb3b3');
+      tempIsCelsius = !tempIsCelsius;
   }
 
   //based on the API value of the icon, it sets the icon and the background image accordingly
@@ -121,21 +125,19 @@ $(document).ready(function(){
   }
 
   function changeSpeedSys(){
-    var currSpeed;
-    var currSpeedSys=$("#currSpeedSys").text();
-    if (currSpeedSys=='mi/h'){
+    if (!windIsInKm){
       $('#currSpeedSys').text('km/h');
       $('#optionalSpeedSys').text('mi/h');
-      currSpeed=parseFloat($('#windspeed').text())*0.621;
-      $("#windspeed").text(currSpeed.toFixed(2));
-    } else if (currSpeedSys='km/h'){
+      $("#windspeed").text(windSpeedMiles.toFixed(2));
+    } else {
       $('#currSpeedSys').text('mi/h');
       $('#optionalSpeedSys').text('km/h');
-      currSpeed=parseFloat($('#windspeed').text())*1.609;
+      var currSpeed= windSpeedMiles*1.609;
       $("#windspeed").text(currSpeed.toFixed(2));
     }
+    windIsInKm = ! windIsInKm;
   }
 
-  $("#optionalSys").on("click",changeTempSys());
+
 
 });
